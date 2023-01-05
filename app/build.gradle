@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
 }
 
+
+
 android {
     namespace 'com.example.nutrinfo'
     compileSdk 32

@@ -3,6 +3,7 @@ package com.example.nutrinfo;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
@@ -25,6 +26,7 @@ import com.budiyev.android.codescanner.DecodeCallback;
 import com.example.nutrinfo.databinding.ActivityMainBinding;
 import com.example.nutrinfo.ml.ModelUnquant;
 import com.google.zxing.Result;
+import com.google.zxing.maxicode.MaxiCodeReader;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         context = this;
         result  = findViewById(R.id.tv_textResult);
+        imageView = findViewById(R.id.ImageView);
         super.onCreate(savedInstanceState);
         ActivityResultLauncher<Intent> actvityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -56,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
                         Intent data =result.getData();
                         if(resultCode==RESULT_OK){
                             Bitmap photo = (Bitmap) data.getExtras().get("data");
+                            int dimension = Math.min(photo.getHeight(),photo.getWidth());
+                            photo = ThumbnailUtils.extractThumbnail(photo,dimension,dimension);
                             imageView.setImageBitmap(photo);
                             photo = Bitmap.createScaledBitmap(photo,imageSize,imageSize,false);
                             classifyImage(photo);

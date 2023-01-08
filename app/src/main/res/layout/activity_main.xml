@@ -22,13 +22,20 @@
     
     <com.budiyev.android.codescanner.CodeScannerView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="200dp"
         android:id="@+id/scanner_view"
         app:autoFocusButtonColor="@color/white"
         app:autoFocusButtonVisible="true"
         app:flashButtonColor="@color/white"
         app:flashButtonVisible="true"
         app:maskColor="#57000000"/>
+    <ImageView
+        android:id="@+id/ImageView"
+        android:layout_width="200sp"
+        android:layout_height="250sp"
+        android:layout_below="@id/tv_textResult"
+        android:layout_centerInParent="true"
+        />
     
     <TextView
         android:id="@+id/tv_textView"

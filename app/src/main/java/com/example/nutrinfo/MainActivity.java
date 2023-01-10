@@ -20,13 +20,15 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.budiyev.android.codescanner.AutoFocusMode;
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
+import com.budiyev.android.codescanner.ScanMode;
 import com.example.nutrinfo.databinding.ActivityMainBinding;
 import com.example.nutrinfo.ml.ModelUnquant;
 import com.google.zxing.Result;
-import com.google.zxing.maxicode.MaxiCodeReader;
+
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
@@ -37,52 +39,37 @@ import java.nio.ByteOrder;
 
 
 public class MainActivity extends AppCompatActivity {
-    private CodeScanner mCodeScanner;
     ImageView imageView;
+    private CodeScanner mCodeScanner;
     private ActivityMainBinding binding;
-    int imageSize = 224 ;
+    int imageSize = 224;
     TextView result;
     Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        context = this;
-        result  = findViewById(R.id.tv_textResult);
-        imageView = findViewById(R.id.ImageView);
         super.onCreate(savedInstanceState);
-        ActivityResultLauncher<Intent> actvityResultLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        int resultCode = result.getResultCode();
-                        Intent data =result.getData();
-                        if(resultCode==RESULT_OK){
-                            Bitmap photo = (Bitmap) data.getExtras().get("data");
-                            int dimension = Math.min(photo.getHeight(),photo.getWidth());
-                            photo = ThumbnailUtils.extractThumbnail(photo,dimension,dimension);
-                            imageView.setImageBitmap(photo);
-                            photo = Bitmap.createScaledBitmap(photo,imageSize,imageSize,false);
-                            classifyImage(photo);
-                        } else {
-                            Toast.makeText(MainActivity.this,"Cancelled",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-        );
+        context = this;
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
         setContentView(R.layout.activity_main);
+
+        result = findViewById(R.id.tv_textResult);
+        imageView = (ImageView)findViewById(R.id.iv_image);
+
         CodeScannerView scannerView = findViewById(R.id.scanner_view);
         mCodeScanner = new CodeScanner(this, scannerView);
+        mCodeScanner.setAutoFocusMode(AutoFocusMode.CONTINUOUS);
+        mCodeScanner.setScanMode(ScanMode.CONTINUOUS);
         mCodeScanner.setDecodeCallback(new DecodeCallback() {
             @Override
-            public void onDecoded(@NonNull final Result result) {
+            public void onDecoded(@NonNull final Result barcode) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(MainActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
+                        result.setText(barcode.getText());
                     }
                 });
             }
@@ -93,7 +80,31 @@ public class MainActivity extends AppCompatActivity {
                 mCodeScanner.startPreview();
             }
         });
-    // SCAN BUTTON
+
+
+        ActivityResultLauncher<Intent> actvityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        int resultCode = result.getResultCode();
+                        Intent data = result.getData();
+                        if (resultCode == RESULT_OK) {
+                            Bitmap photo = (Bitmap) data.getExtras().get("data");
+                            int dimension = Math.min(photo.getHeight(), photo.getWidth());
+                            photo = ThumbnailUtils.extractThumbnail(photo, dimension, dimension);
+                            imageView.setImageBitmap(photo);
+                            photo = Bitmap.createScaledBitmap(photo, imageSize, imageSize, false);
+                            classifyImage(photo);
+                        } else {
+                            Toast.makeText(MainActivity.this, "Cancelled", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
+
+
+        // SCAN BUTTON
         Button ScanBtn = findViewById(R.id.ScanBtn);
         ScanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,24 +115,24 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void classifyImage(Bitmap image){
+    public void classifyImage(Bitmap image) {
         try {
             ModelUnquant model = ModelUnquant.newInstance(context);
-            ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4*imageSize*imageSize*3);
+            ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);
 
             // Creates inputs for reference.
             TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
             byteBuffer.order(ByteOrder.nativeOrder());
 
-            int [] intValues = new int[imageSize*imageSize];
-            image.getPixels(intValues,0,image.getWidth(),0,0,image.getWidth(), image.getHeight());
+            int[] intValues = new int[imageSize * imageSize];
+            image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
             int nr = 0; // the pixel
-            for(int i = 0 ; i<imageSize;i++){
-                for(int j = 0 ; j<imageSize;j++){
+            for (int i = 0; i < imageSize; i++) {
+                for (int j = 0; j < imageSize; j++) {
                     int val = intValues[nr++];
-                    byteBuffer.putFloat(((val>>16)&0xFF)*(1.f/255.f));
-                    byteBuffer.putFloat(((val>>8)&0xFF)*(1.f/255.f));
-                    byteBuffer.putFloat((val&0xFF)*(1.f/255.f));
+                    byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 255.f));
+                    byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 255.f));
+                    byteBuffer.putFloat((val & 0xFF) * (1.f / 255.f));
                 }
             }
             inputFeature0.loadBuffer(byteBuffer);
@@ -130,16 +141,17 @@ public class MainActivity extends AppCompatActivity {
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
             float[] confidences = outputFeature0.getFloatArray();
-            int maxP = 0 ;
-            float maxConfidence=0;
-            for (int i =0 ;i<confidences.length;i++){
-                if(confidences[i]>maxConfidence){
+            int maxP = 0;
+            float maxConfidence = 0;
+            for (int i = 0; i < confidences.length; i++) {
+                if (confidences[i] > maxConfidence) {
                     maxConfidence = confidences[i];
-                    maxP=i;
+                    maxP = i;
                 }
             }
-            String[] classes = {"apple","banana","orange"};
+            String[] classes = {"apple", "banana", "orange"};
             result.setText(classes[maxP]);
+            System.out.println(classes[maxP]);
             // Releases model resources if no longer used.
             model.close();
         } catch (IOException e) {

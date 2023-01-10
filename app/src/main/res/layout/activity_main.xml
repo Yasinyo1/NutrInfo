@@ -19,40 +19,37 @@
             app:popupTheme="@style/Theme.NutrInfo.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
-    
+
     <com.budiyev.android.codescanner.CodeScannerView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="400dp"
         android:id="@+id/scanner_view"
+        android:layout_marginTop="55dp"
         app:autoFocusButtonColor="@color/white"
         app:autoFocusButtonVisible="true"
         app:flashButtonColor="@color/white"
         app:flashButtonVisible="true"
         app:maskColor="#57000000"/>
-    <ImageView
-        android:id="@+id/ImageView"
-        android:layout_width="200sp"
-        android:layout_height="250sp"
-        android:layout_below="@id/tv_textResult"
-        android:layout_centerInParent="true"
-        />
-    
+
     <TextView
         android:id="@+id/tv_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/scanner_view"
+        android:layout_below="@id/scanner_view"
         android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
-        android:text="Scan something"
-        android:textColor="@color/black"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Scan barcode"
+        android:textColor="@color/black" />
     <Button
         android:id="@+id/ScanBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_textView"
         android:layout_centerInParent="true"
-        android:text="Scan"
+        android:text="Scan Object"
         />
     <TextView
         android:id="@+id/tv_textResult"
@@ -63,6 +60,14 @@
         android:layout_margin="20dp"
         android:text=""
         android:textColor="@color/black"/>
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="200sp"
+        android:layout_height="250sp"
+        android:layout_below="@id/tv_textResult"
+        android:layout_centerInParent="true" />
+
 
 
 </RelativeLayout>

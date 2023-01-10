@@ -14,7 +14,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
-        android:id="@+id/banana_header"
+        android:id="@+id/orange_header"
         android:layout_width="match_parent"
         android:layout_height="66dp"
         android:layout_alignParentStart="true"
@@ -33,7 +33,7 @@
         android:textStyle="bold|italic" />
 
     <ImageView
-        android:id="@+id/bananaView"
+        android:id="@+id/orangeView"
         android:layout_width="122dp"
         android:layout_height="118dp"
         android:layout_alignParentTop="true"
@@ -55,7 +55,7 @@
         app:srcCompat="@drawable/banana_nutrition_label" />
 
     <TextView
-        android:id="@+id/banana_tv"
+        android:id="@+id/orange_tv"
         android:layout_width="128dp"
         android:layout_height="46dp"
         android:layout_alignParentEnd="true"
@@ -67,7 +67,7 @@
         android:textStyle="italic" />
 
     <TextView
-        android:id="@+id/banana_tv2"
+        android:id="@+id/orange_tv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -77,7 +77,7 @@
         android:text="• Fiber"/>
 
     <TextView
-        android:id="@+id/banana_tv3"
+        android:id="@+id/orange_tv3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -87,7 +87,7 @@
         android:text="• Potassium" />
 
     <TextView
-        android:id="@+id/banana_tv4"
+        android:id="@+id/orange_tv4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -97,7 +97,7 @@
         android:text="• Vitamin C" />
 
     <TextView
-        android:id="@+id/banana_tv5"
+        android:id="@+id/orange_tv5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -130,7 +130,7 @@
         android:textColor="#000000" />
 
     <TextView
-        android:id="@+id/banana_tv7"
+        android:id="@+id/orange_tv7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

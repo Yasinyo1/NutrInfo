@@ -26,7 +26,7 @@
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="666dp"
         android:background="@android:color/holo_green_dark"
-        android:text="Apple"
+        android:text="Orange"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="40sp"
@@ -40,7 +40,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="289dp"
-        app:srcCompat="@drawable/apple_image" />
+        app:srcCompat="@drawable/orange_photo" />
 
     <ImageView
         android:id="@+id/bananaLabel"
@@ -52,7 +52,7 @@
         android:layout_marginStart="94dp"
         android:layout_marginTop="279dp"
         android:layout_marginEnd="85dp"
-        app:srcCompat="@drawable/apple_nutrition_label" />
+        app:srcCompat="@drawable/orange_nutrition_label" />
 
     <TextView
         android:id="@+id/orange_tv"
@@ -82,9 +82,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="203dp"
+        android:layout_marginEnd="213dp"
         android:layout_marginBottom="588dp"
-        android:text="• Vitamin C" />
+        android:text="• Calcium" />
 
     <TextView
         android:id="@+id/orange_tv4"
@@ -92,9 +92,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="204dp"
+        android:layout_marginEnd="203dp"
         android:layout_marginBottom="569dp"
-        android:text="• Vitamin E" />
+        android:text="• Vitamin C" />
 
     <TextView
         android:id="@+id/orange_tv5"
@@ -102,9 +102,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="185dp"
+        android:layout_marginEnd="203dp"
         android:layout_marginBottom="550dp"
-        android:text="• Antioxidants" />
+        android:text="• Vitamin B" />
 
     <Button
         android:id="@+id/back_button"
@@ -125,8 +125,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="190dp"
-        android:layout_marginEnd="216dp"
+        android:layout_marginTop="205dp"
+        android:layout_marginEnd="217dp"
         android:text="Vegan ✓" />
 
 

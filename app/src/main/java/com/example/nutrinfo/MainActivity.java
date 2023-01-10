@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         result = findViewById(R.id.tv_textResult);
-        imageView = (ImageView)findViewById(R.id.iv_image);
+        imageView = (ImageView) findViewById(R.id.iv_image);
 
         CodeScannerView scannerView = findViewById(R.id.scanner_view);
         mCodeScanner = new CodeScanner(this, scannerView);
@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         result.setText(barcode.getText());
+                        goToInfoPage(barcode.getText());
                     }
                 });
             }
@@ -113,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
                 actvityResultLauncher.launch(intent);
             }
         });
+
+
     }
 
     public void classifyImage(Bitmap image) {
@@ -152,12 +155,22 @@ public class MainActivity extends AppCompatActivity {
             String[] classes = {"apple", "banana", "orange"};
             result.setText(classes[maxP]);
             System.out.println(classes[maxP]);
+            //Show Info Page
+            goToInfoPage(classes[maxP]);
+
             // Releases model resources if no longer used.
             model.close();
         } catch (IOException e) {
             // TODO Handle the exception
         }
     }
+
+    protected void goToInfoPage(String page){
+        Intent i = new Intent(MainActivity.this, InfoActivity.class);
+        i.putExtra("item", page);
+        startActivity(i);
+    }
+
 
     @Override
     protected void onResume() {

@@ -7,20 +7,20 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/apple_header"
+        android:id="@+id/milk_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#4B8A2A"
         android:gravity="center"
         android:textSize="38dp"
-        android:text="Apple" />
+        android:text="Full Fat Milk" />
 
     <ImageView
-        android:id="@+id/appleView"
+        android:id="@+id/milkView"
         android:layout_width="134dp"
         android:layout_height="127dp"
-        android:layout_below="@+id/apple_header"
-        app:srcCompat="@drawable/apple_image" />
+        android:layout_below="@+id/milk_header"
+        app:srcCompat="@drawable/milk_fullfat" />
 
     <Button
         android:id="@+id/back_button"
@@ -33,70 +33,80 @@
         android:textColor="#000000" />
 
     <ImageView
-        android:id="@+id/appleLabel"
+        android:id="@+id/milkLabel"
         android:layout_width="wrap_content"
         android:layout_height="442dp"
-        android:layout_below="@+id/appleView"
+        android:layout_below="@+id/milkView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="90dp"
-        app:srcCompat="@drawable/apple_nutrition_label" />
+        app:srcCompat="@drawable/full_fat_milk_nutrition_label" />
 
     <TextView
-        android:id="@+id/apple_tv"
+        android:id="@+id/milk_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/apple_header"
+        android:layout_below="@+id/milk_header"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
-        android:layout_toRightOf="@id/appleView"
+        android:layout_toRightOf="@id/milkView"
         android:text="Good source of: "
         android:textSize="18sp"
         android:textStyle="italic" />
 
     <TextView
-        android:id="@+id/apple_tv2"
+        android:id="@+id/milk_tv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/apple_tv"
-        android:layout_toRightOf="@id/appleView"
+        android:layout_below="@+id/milk_tv"
+        android:layout_toRightOf="@id/milkView"
         android:layout_marginLeft="20dp"
-        android:text="• Fiber"/>
+        android:text="• Calcium"/>
 
     <TextView
-        android:id="@+id/apple_tv3"
+        android:id="@+id/milk_tv3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/apple_tv2"
-        android:layout_toRightOf="@id/appleView"
+        android:layout_below="@+id/milk_tv2"
+        android:layout_toRightOf="@id/milkView"
         android:layout_marginLeft="20dp"
-        android:text="• Vitamin C"/>
+        android:text="• Potassium"/>
 
     <TextView
-        android:id="@+id/apple_tv4"
+        android:id="@+id/milk_tv4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/apple_tv3"
-        android:layout_toRightOf="@id/appleView"
+        android:layout_below="@+id/milk_tv3"
+        android:layout_toRightOf="@id/milkView"
         android:layout_marginLeft="20dp"
-        android:text="• Vitamin E"/>
+        android:text="• Phosphorus"/>
 
     <TextView
-        android:id="@+id/apple_tv5"
+        android:id="@+id/milk_tv5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/apple_tv4"
-        android:layout_toRightOf="@id/appleView"
+        android:layout_below="@+id/milk_tv4"
+        android:layout_toRightOf="@id/milkView"
         android:layout_marginLeft="20dp"
-        android:text="• Antioxidants"/>
+        android:text="• Vitamin D"/>
 
     <TextView
-        android:id="@+id/apple_tv6"
+        android:id="@+id/milk_tv6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/apple_tv5"
-        android:layout_toRightOf="@id/appleView"
+        android:layout_below="@+id/milk_tv5"
+        android:layout_toRightOf="@id/milkView"
         android:layout_marginLeft="20dp"
-        android:text="Vegan ✓"/>
+        android:text="Not Vegan"/>
+
+    <TextView
+        android:id="@+id/milk_tv7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/milk_tv6"
+        android:layout_toRightOf="@id/milkView"
+        android:layout_marginLeft="20dp"
+        android:text="Contains lactose"/>
+
 
 </RelativeLayout>

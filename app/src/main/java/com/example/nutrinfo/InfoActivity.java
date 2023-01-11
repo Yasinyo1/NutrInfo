@@ -35,23 +35,31 @@ public class InfoActivity extends AppCompatActivity {
                 case "orange":
                     setContentView(R.layout.info_page_orange);
                     break;
+                case "8718452645220":
+                    setContentView(R.layout.info_page_full_fat_milk);
+                    break;
                 default:
                     finish();
             }
-        } catch (RuntimeException e){
+        } catch (RuntimeException e) {
             e.printStackTrace();
             finish();
         }
     }
 
     protected void configureBackButton() {
-        // BACK BUTTOM
-        Button backBtn = findViewById(R.id.back_button);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        try {
+            // BACK BUTTOM
+            Button backBtn = findViewById(R.id.back_button);
+            backBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            });
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            finish();
+        }
     }
 }

@@ -38,6 +38,9 @@ public class InfoActivity extends AppCompatActivity {
                 case "8718452645220":
                     setContentView(R.layout.info_page_full_fat_milk);
                     break;
+                case "4000415065805":
+                    setContentView(R.layout.info_page_dark_chocolate);
+                    break;
                 default:
                     finish();
             }

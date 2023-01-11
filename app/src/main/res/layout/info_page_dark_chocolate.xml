@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/dark_choco_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#4B8A2A"
+        android:gravity="center"
+        android:textSize="38dp"
+        android:text="       Dark Chocolate" />
+
+    <ImageView
+        android:id="@+id/dark_chocoView"
+        android:layout_width="134dp"
+        android:layout_height="127dp"
+        android:layout_below="@+id/dark_choco_header"
+        app:srcCompat="@drawable/darkchocolate" />
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#ADE88F"
+        android:textSize="12sp"
+        android:text="Back"
+        android:layout_marginLeft="6dp"
+        android:textColor="#000000" />
+
+    <ImageView
+        android:id="@+id/dark_chocoLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="442dp"
+        android:layout_below="@+id/dark_chocoView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        app:srcCompat="@drawable/dark_chocolate_nutrition_label" />
+
+    <TextView
+        android:id="@+id/dark_choco_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dark_choco_header"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toRightOf="@id/dark_chocoView"
+        android:text="Good source of: "
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/dark_choco_tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dark_choco_tv"
+        android:layout_toRightOf="@id/dark_chocoView"
+        android:layout_marginLeft="20dp"
+        android:text="• Fiber"/>
+
+    <TextView
+        android:id="@+id/dark_choco_tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dark_choco_tv2"
+        android:layout_toRightOf="@id/dark_chocoView"
+        android:layout_marginLeft="20dp"
+        android:text="• Iron"/>
+
+    <TextView
+        android:id="@+id/dark_choco_tv4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dark_choco_tv3"
+        android:layout_toRightOf="@id/dark_chocoView"
+        android:layout_marginLeft="20dp"
+        android:text="• Magnesium"/>
+
+    <TextView
+        android:id="@+id/dark_choco_tv5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dark_choco_tv4"
+        android:layout_toRightOf="@id/dark_chocoView"
+        android:layout_marginLeft="20dp"
+        android:text="• Zinc"/>
+
+    <TextView
+        android:id="@+id/dark_choco_tv6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dark_choco_tv5"
+        android:layout_toRightOf="@id/dark_chocoView"
+        android:layout_marginLeft="20dp"
+        android:text="• Copper"/>
+
+    <TextView
+        android:id="@+id/dark_choco_tv7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dark_choco_tv6"
+        android:layout_toRightOf="@id/dark_chocoView"
+        android:layout_marginLeft="20dp"
+        android:text="Not Vegan"/>
+
+    <TextView
+        android:id="@+id/dark_choco_tv8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dark_choco_tv7"
+        android:layout_toRightOf="@id/dark_chocoView"
+        android:layout_marginLeft="20dp"
+        android:text="Contains lactose"/>
+
+</RelativeLayout>

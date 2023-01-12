@@ -3,6 +3,7 @@ package com.example.nutrinfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -42,6 +43,7 @@ public class InfoActivity extends AppCompatActivity {
                     setContentView(R.layout.info_page_dark_chocolate);
                     break;
                 default:
+                    Toast.makeText(InfoActivity.this, "There's no information available for this product.", Toast.LENGTH_SHORT).show();
                     finish();
             }
         } catch (RuntimeException e) {

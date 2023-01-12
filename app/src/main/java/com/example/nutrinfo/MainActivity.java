@@ -1,5 +1,6 @@
 package com.example.nutrinfo;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -43,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     private CodeScanner mCodeScanner;
     private ActivityMainBinding binding;
     int imageSize = 224;
-    TextView result;
     Context context;
 
     @Override
@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
         setContentView(R.layout.activity_main);
 
-        result = findViewById(R.id.tv_textResult);
         imageView = (ImageView) findViewById(R.id.iv_image);
 
         CodeScannerView scannerView = findViewById(R.id.scanner_view);
@@ -69,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        result.setText(barcode.getText());
                         goToInfoPage(barcode.getText());
                     }
                 });
@@ -118,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Classifies the image taken by the Intent
+     * @param image bitmap of the image
+     */
     public void classifyImage(Bitmap image) {
         try {
             ModelUnquant model = ModelUnquant.newInstance(context);
@@ -153,8 +155,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             String[] classes = {"apple", "banana", "orange"};
-            result.setText(classes[maxP]);
-            System.out.println(classes[maxP]);
             //Show Info Page
             goToInfoPage(classes[maxP]);
 
@@ -166,9 +166,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void goToInfoPage(String page){
-        Intent i = new Intent(MainActivity.this, InfoActivity.class);
-        i.putExtra("item", page);
-        startActivity(i);
+        Intent itemPage = new Intent(MainActivity.this, InfoActivity.class);
+        itemPage.putExtra("item", page);
+        startActivity(itemPage);
     }
 
 
@@ -189,5 +189,20 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    /**
+     * Pop-up dialog --- NEEDS TO BE IMPLEMENTED (linked to the info button on the toolbar)
+     * @param view
+     */
+//    public void showInfo(){
+//        Dialog dialog = new Dialog(this);
+//        dialog.setContentView(R.layout.info_dialog);
+//        dialog.show();
+//    }
+
+    public void showInfo(View view) {
+        Intent intent = new Intent(this, InfoActivity.class);
+        startActivity(intent);
     }
 }
